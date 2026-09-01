@@ -7,6 +7,7 @@ compiler is written in Algol-24 and compiles itself.
 
 ```sh
 brew tap schildawg/algol24
+brew trust schildawg/algol24
 brew install algol24
 ```
 
