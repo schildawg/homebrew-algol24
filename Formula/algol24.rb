@@ -17,16 +17,10 @@
 class Algol24 < Formula
   desc "Retro-modern, gradually typed, self-hosting language"
   homepage "https://github.com/schildawg/algol24"
-  url "https://github.com/schildawg/algol24/archive/refs/tags/v0.1.1.tar.gz"
-  sha256 "990a94cd93553172e5610fef4a832171f7f4f791ad82b903bdf3dac2abdd1251"
+  url "https://github.com/schildawg/algol24/archive/refs/tags/v0.1.2.tar.gz"
+  sha256 "65dd34f98aada4d944a03e4a26d0a059be0ba6cb6e32591f2fdeb6ce615bff88"
   license "MIT"
   head "https://github.com/schildawg/algol24.git", branch: "main"
-
-  bottle do
-    root_url "https://github.com/schildawg/homebrew-algol24/releases/download/algol24-0.1.1"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "10e8ed719e53adbc644e394010f267d48bc45332d16d59efd20e54ebafb93a73"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "9819c4e77ecf4d0455343af98d7292721db1b0ec74fd07878e46cbf9c3fd022a"
-  end
 
   def install
     # Foreign calls are part of the language, so the packaged build has them.
