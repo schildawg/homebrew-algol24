@@ -22,6 +22,12 @@ class Algol24 < Formula
   license "MIT"
   head "https://github.com/schildawg/algol24.git", branch: "main"
 
+  bottle do
+    root_url "https://github.com/schildawg/homebrew-algol24/releases/download/algol24-0.2.2"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "5b6980f77225e17bfc88f46d965f0764f437f9f4eeb60ec00ab82e3aeb58f444"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "b6445887d1d679f45f67dd3703e7df08d735976beb2c918bc65e9a3dbd5ee855"
+  end
+
   def install
     # Foreign calls are part of the language, so the packaged build has them.
     # The bootstrap stays buildable with a C compiler and nothing else -- that
