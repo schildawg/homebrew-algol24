@@ -31,7 +31,19 @@ jobs:
   test-bot:
     strategy:
       matrix:
-        os: [macos-15, macos-14]
+        # ⚠️ macos-14 is GONE, not failing.  Its last runner image was published
+        # 2026-09-01 where macos-15 and macos-26 publish weekly, and a job
+        # requesting it is cancelled in under a second having run no steps --
+        # which `gh pr checks` reports as "fail", so it reads like a formula
+        # problem rather than a retired image.
+        #
+        # Nothing else can replace it: a bottle's tag comes from the OS that
+        # BUILT it, so only a macos-14 runner makes an arm64_sonoma bottle.
+        # Sonoma therefore has no bottle from here on and installs from source,
+        # which this tap's README measures at about 2.4 seconds.  A Sonoma
+        # machine can still build one by hand with `brew install
+        # --build-bottle` and `brew bottle`, if one is ever wanted.
+        os: [macos-15, macos-26]
     runs-on: ${{ matrix.os }}
     permissions:
       actions: read
