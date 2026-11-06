@@ -43,7 +43,11 @@ jobs:
         # which this tap's README measures at about 2.4 seconds.  A Sonoma
         # machine can still build one by hand with `brew install
         # --build-bottle` and `brew bottle`, if one is ever wanted.
-        os: [macos-15, macos-26]
+        # ⚠️ A BOTTLE'S TAG COMES FROM THE OS THAT BUILT IT, so this list is
+        # exactly the set of platforms that get one.  ubuntu-24.04 makes
+        # x86_64_linux; everything else installs from source, which works and
+        # is what Sonoma does since macos-14 retired.
+        os: [macos-15, macos-26, ubuntu-24.04]
     runs-on: ${{ matrix.os }}
     permissions:
       actions: read

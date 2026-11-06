@@ -5,15 +5,14 @@
 # Formula/algol24.rb is a copy of this file with the url and sha256 for the
 # release being published.
 #
-# ⚠️ NO dependency block, and that is not an oversight.  A --ffi build links
-# against /usr/lib/libffi.dylib -- the system one, shipped with macOS -- so the
-# bottle needs nothing beyond the operating system.  A Linux formula would have
-# to declare libffi instead, which is one reason this tap bottles for macOS
-# alone.
+# ⚠️ THE DEPENDENCY IS LINUX-ONLY, and the asymmetry is the operating system's.
+# A --ffi build links the foreign-call library; macOS ships one in /usr/lib, so
+# a mac bottle needs nothing beyond the OS, and Linux has to be told.  That is
+# the only thing the two platforms do not share here.
 #
-# ⚠️ Naming that library in the ordinary way, even inside a comment, fails
-# 'brew style': the audit reads it as a dependency someone commented out, and
-# an explanation of why a formula has none looks exactly like one.
+# ⚠️ Naming that library in the ordinary way inside a COMMENT fails
+# 'brew style': the audit reads it as a dependency someone commented out.  It
+# is named for real below, where it belongs.
 class Algol24 < Formula
   desc "Retro-modern, gradually typed, self-hosting language"
   homepage "https://github.com/schildawg/algol24"
@@ -22,10 +21,8 @@ class Algol24 < Formula
   license "MIT"
   head "https://github.com/schildawg/algol24.git", branch: "main"
 
-  bottle do
-    root_url "https://github.com/schildawg/homebrew-algol24/releases/download/algol24-0.2.2"
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "5b6980f77225e17bfc88f46d965f0764f437f9f4eeb60ec00ab82e3aeb58f444"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "b6445887d1d679f45f67dd3703e7df08d735976beb2c918bc65e9a3dbd5ee855"
+  on_linux do
+    depends_on "libffi"
   end
 
   def install
