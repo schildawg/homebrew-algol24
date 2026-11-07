@@ -16,17 +16,10 @@
 class Algol24 < Formula
   desc "Retro-modern, gradually typed, self-hosting language"
   homepage "https://github.com/schildawg/algol24"
-  url "https://github.com/schildawg/algol24/archive/refs/tags/v0.2.3.tar.gz"
-  sha256 "2520862cc450362ebe36d0b7bf0a37c1948b8362dc21fc77a7f66dc71b42869f"
+  url "https://github.com/schildawg/algol24/archive/refs/tags/v0.2.4.tar.gz"
+  sha256 "9d9dc66a8029470687a1206afd044f8f824c9ff6fa29db1404cc00ac63220145"
   license "MIT"
   head "https://github.com/schildawg/algol24.git", branch: "main"
-
-  bottle do
-    root_url "https://github.com/schildawg/homebrew-algol24/releases/download/algol24-0.2.3"
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "7a7d502cf69e7b44cdb35f76e9f19d02b7150ac9604e442fb7d631ab0e156de9"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "4de2dc4bd9d382c6f21a1f0a7937f5334e116bcfdaf6d239764b76d221dec93a"
-    sha256 cellar: :any,                 x86_64_linux:  "1a2b6ed16d4605a6c9b98f6ff316e2ac4fe8f15d279fc5beea8914de8e60f5af"
-  end
 
   on_linux do
     depends_on "libffi"
@@ -61,6 +54,16 @@ class Algol24 < Formula
 
     (testpath/"hello.a24").write "WriteLn ('hello, ' + Str (2 + 2));\n"
     assert_equal "hello, 4\n", shell_output("#{bin}/algc hello.a24")
+
+    # ⚠️ ErrorLn [RT-030] must not reach STANDARD OUTPUT, which is the whole of
+    # what it is for: a diagnostic has to survive `prog > results.txt` without
+    # corrupting what the program produced.  shell_output captures stdout only,
+    # so stdout holding the FIRST line and nothing else is the assertion.
+    (testpath/"streams.a24").write <<~ALGOL
+      WriteLn ('to output');
+      ErrorLn ('to the error stream');
+    ALGOL
+    assert_equal "to output\n", shell_output("#{bin}/algc streams.a24")
 
     # The emitted directory must build on its own, which is the whole point of
     # shipping the runtime beside the binary.
