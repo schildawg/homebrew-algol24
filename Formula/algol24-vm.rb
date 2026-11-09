@@ -22,7 +22,6 @@ class Algol24Vm < Formula
   license "MIT"
   head "https://github.com/schildawg/algol24.git", branch: "main"
 
-
   # ⚠️ sdl2-compat AND NOT sdl2, which is merely its alias -- `brew linkage
   # --test` reports a dylib reached through an alias as an INDIRECT dependency
   # and fails the formula for it.  Homebrew's sdl2 has become a compatibility
