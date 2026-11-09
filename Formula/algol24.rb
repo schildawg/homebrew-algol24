@@ -21,7 +21,6 @@ class Algol24 < Formula
   license "MIT"
   head "https://github.com/schildawg/algol24.git", branch: "main"
 
-
   on_linux do
     depends_on "libffi"
   end
