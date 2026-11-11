@@ -22,6 +22,13 @@ class Algol24Vm < Formula
   license "MIT"
   head "https://github.com/schildawg/algol24.git", branch: "main"
 
+  bottle do
+    root_url "https://github.com/schildawg/homebrew-algol24/releases/download/algol24-vm-0.2.7"
+    sha256 cellar: :any, arm64_tahoe:   "160faafdc957a8d2df1da7aba0062f9fd5a6eef288bed5dff216a752d17115c7"
+    sha256 cellar: :any, arm64_sequoia: "5509297b24be1d4f7d89a356001b2cc7b5c8c429150ab9b1a552790e430412c1"
+    sha256 cellar: :any, x86_64_linux:  "e187ab3cc6d6a5e61424e0624f57777e6c7cf5ebd5454024005dacbf0ddaabc4"
+  end
+
   # ⚠️ sdl2-compat AND NOT sdl2, which is merely its alias -- `brew linkage
   # --test` reports a dylib reached through an alias as an INDIRECT dependency
   # and fails the formula for it.  Homebrew's sdl2 has become a compatibility
