@@ -17,17 +17,10 @@
 class Algol24Vm < Formula
   desc "Bytecode machine for Algol-24, with the Algol-24 runtime library"
   homepage "https://github.com/schildawg/algol24"
-  url "https://github.com/schildawg/algol24/archive/refs/tags/v0.2.6.tar.gz"
-  sha256 "1c16900c2aa9c3579fee49b0b4fc1569c40d6b5388c9f69d26b5bef82473a059"
+  url "https://github.com/schildawg/algol24/archive/refs/tags/v0.2.7.tar.gz"
+  sha256 "1ca10ac5ced8b4225f1e49af57217a6fc0d41e51b007128ba3573990de12afab"
   license "MIT"
   head "https://github.com/schildawg/algol24.git", branch: "main"
-
-  bottle do
-    root_url "https://github.com/schildawg/homebrew-algol24/releases/download/algol24-vm-0.2.6"
-    sha256 cellar: :any, arm64_tahoe:   "9515739fa9546f582a08f5b838a1409de7d8458f74fddf75a0077d1e9cddf2ab"
-    sha256 cellar: :any, arm64_sequoia: "0b6b127541905d79cff88cb69a4c16b3c8a82f2ec86b3f7369d7f1ebb8c1dab0"
-    sha256 cellar: :any, x86_64_linux:  "7064a39c6e5674ee9bd3f3ade915a004b1638f874aa340df6f2e73c0b3e42a06"
-  end
 
   # ⚠️ sdl2-compat AND NOT sdl2, which is merely its alias -- `brew linkage
   # --test` reports a dylib reached through an alias as an INDIRECT dependency
