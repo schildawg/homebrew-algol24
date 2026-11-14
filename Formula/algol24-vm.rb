@@ -17,17 +17,10 @@
 class Algol24Vm < Formula
   desc "Bytecode machine for Algol-24, with the Algol-24 runtime library"
   homepage "https://github.com/schildawg/algol24"
-  url "https://github.com/schildawg/algol24/archive/refs/tags/v0.4.0.tar.gz"
-  sha256 "94437f3fb0f71354125705d3e199974868d4c9111f315095d1bcaaf8d73bbbb2"
+  url "https://github.com/schildawg/algol24/archive/refs/tags/v0.4.1.tar.gz"
+  sha256 "74725884c4ab13469e9091501dcfa181195642b3666f26fc20e48361c6b4d7cd"
   license "MIT"
   head "https://github.com/schildawg/algol24.git", branch: "main"
-
-  bottle do
-    root_url "https://github.com/schildawg/homebrew-algol24/releases/download/algol24-vm-0.4.0"
-    sha256 cellar: :any, arm64_tahoe:   "e1abee6d08da1cea372a78906684f5bcd96e5b04d9d817c4baebf87f46e950cf"
-    sha256 cellar: :any, arm64_sequoia: "b238ce2a66b406378e46305384ada0f041b925e520626bbc6be7a2a6a5be8df1"
-    sha256 cellar: :any, x86_64_linux:  "214d96dfeeb051931b2611a8c98d508b97d1c1dc5d0812a4e58b421e3464bd98"
-  end
 
   # ⚠️ sdl2-compat AND NOT sdl2, which is merely its alias -- `brew linkage
   # --test` reports a dylib reached through an alias as an INDIRECT dependency
@@ -45,14 +38,14 @@ class Algol24Vm < Formula
   end
 
   # ⚠️ PINNED, and to a VERSION rather than a branch: the bundle is a pairing
-  # of two releases, and `algol24-vm 0.4.0` carrying `algol24-library 0.2.0`
+  # of two releases, and `algol24-vm 0.4.1` carrying `algol24-library 0.3.1`
   # says which.  The library's number is its own and does not track this one --
   # it is a separate repository with its own release events and its own defect
   # record, where algc and algvm are two binaries from one tree and so share a
   # version.
   resource "library" do
-    url "https://github.com/schildawg/algol24-library/archive/refs/tags/v0.2.0.tar.gz"
-    sha256 "f5709dd5d7ab2972f3678a81fd9e961afa4fd6d37f4b310d65cf754a2d5565d3"
+    url "https://github.com/schildawg/algol24-library/archive/refs/tags/v0.3.1.tar.gz"
+    sha256 "1f3c9c523222418ed1cc29e78647d8557f28fa804c0d536b059ae91d835d9727"
   end
 
   def install
