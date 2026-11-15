@@ -16,17 +16,10 @@
 class Algol24 < Formula
   desc "Retro-modern, gradually typed, self-hosting language"
   homepage "https://github.com/schildawg/algol24"
-  url "https://github.com/schildawg/algol24/archive/refs/tags/v0.4.1.tar.gz"
-  sha256 "74725884c4ab13469e9091501dcfa181195642b3666f26fc20e48361c6b4d7cd"
+  url "https://github.com/schildawg/algol24/archive/refs/tags/v0.4.2.tar.gz"
+  sha256 "1259acb42b17962cc1be3d18c6eb92e0d52beab429dee3fa0c14afcf6fdfb3ce"
   license "MIT"
   head "https://github.com/schildawg/algol24.git", branch: "main"
-
-  bottle do
-    root_url "https://github.com/schildawg/homebrew-algol24/releases/download/algol24-0.4.1"
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "e72c0f4a29975bc4d87ce7977daaf2aaa8e410c76bed4e85ae87ad72beb31b66"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "15fe396c63238ab67c9cf87490381ece868e03c15d7b0ea7b3fed0a51e6ff044"
-    sha256 cellar: :any,                 x86_64_linux:  "275e72d6bd7408a62080a476bcf74b9fd6a2818d101c0346954a5ffbf40beac9"
-  end
 
   on_linux do
     depends_on "libffi"
