@@ -21,6 +21,13 @@ class Algol24 < Formula
   license "MIT"
   head "https://github.com/schildawg/algol24.git", branch: "main"
 
+  bottle do
+    root_url "https://github.com/schildawg/homebrew-algol24/releases/download/algol24-0.4.2"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "57d481657f048da4473648d9fc0a9dde7eb43ca9cc4f658ff2ec856864b071b4"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "599b03002f247978eb3004d2c58f87fa0fb3b65c1266cd125ce0ed246ee3f7ce"
+    sha256 cellar: :any,                 x86_64_linux:  "aaa8f899352488972ec4b3afa5372e3dfd735606936736dd0ed5831356ad63e8"
+  end
+
   on_linux do
     depends_on "libffi"
   end
