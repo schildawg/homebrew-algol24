@@ -17,17 +17,10 @@
 class Algol24Vm < Formula
   desc "Bytecode machine for Algol-24, with the Algol-24 runtime library"
   homepage "https://github.com/schildawg/algol24"
-  url "https://github.com/schildawg/algol24/archive/refs/tags/v0.4.2.tar.gz"
-  sha256 "1259acb42b17962cc1be3d18c6eb92e0d52beab429dee3fa0c14afcf6fdfb3ce"
+  url "https://github.com/schildawg/algol24/archive/refs/tags/v0.5.0.tar.gz"
+  sha256 "4ebff74b24f893cf9124a5c8d39678eb6d0984566567cf4d280072228704874b"
   license "MIT"
   head "https://github.com/schildawg/algol24.git", branch: "main"
-
-  bottle do
-    root_url "https://github.com/schildawg/homebrew-algol24/releases/download/algol24-vm-0.4.2"
-    sha256 cellar: :any, arm64_tahoe:   "bb56efadc35a193cb8eb39ad42353b62cb0215c4deb2e4d84a1ad954e1ac468b"
-    sha256 cellar: :any, arm64_sequoia: "9ea38e7ec58b3800abd35a5fb79414c2de7dcfcdb65d380c7d7d876a43b7da64"
-    sha256 cellar: :any, x86_64_linux:  "e6c06ca8c07c362e4d11bdcc49b7011b4a6d3e2526b9c3c1401a4a6f9bb9892e"
-  end
 
   # ⚠️ sdl2-compat AND NOT sdl2, which is merely its alias -- `brew linkage
   # --test` reports a dylib reached through an alias as an INDIRECT dependency
@@ -45,7 +38,7 @@ class Algol24Vm < Formula
   end
 
   # ⚠️ PINNED, and to a VERSION rather than a branch: the bundle is a pairing
-  # of two releases, and `algol24-vm 0.4.2` carrying `algol24-library 0.3.1`
+  # of two releases, and `algol24-vm 0.5.0` carrying `algol24-library 0.3.1`
   # says which.  The library's number is its own and does not track this one --
   # it is a separate repository with its own release events and its own defect
   # record, where algc and algvm are two binaries from one tree and so share a
